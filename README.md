@@ -1,6 +1,6 @@
 ### Kata Quiz!
 
-@sujinleeme님께서 운영하시는 Kata Quiz(이하 카타 퀴즈)입니다~! 매일 출제해주시는 JavaScript, TypeScript 관련 퀴즈에 대한 저만의 답변을 기록해두고자 생성된 레포지토리입니다.
+이수진([@sujinleeme](https://github.com/sujinleeme))님께서 운영하시는 Kata Quiz(이하 카타 퀴즈)입니다~! 매일 출제해주시는 JavaScript, TypeScript 관련 퀴즈에 대한 저만의 답변을 기록해두고자 생성된 레포지토리입니다.
 
 카타 퀴즈는 "디스코드" 애플리케이션에서 진행되며 함께 하실 분들은 [초대링크](https://discord.gg/S75dGJfH)를 통해 참여해주시면 됩니다!
 
