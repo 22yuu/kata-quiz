@@ -2,11 +2,11 @@
 
 1. [코드샌드박스 링크](https://codesandbox.io/s/never-type-dv660)를 열어 타입을 확인해주세요. 타입 힌트로 해당 함수의 타입 확인하고, never 타입이 void와 다른이유를 설명해주세요.
 
-`keepLogging` 함수의 리턴타입은 `never`입니다. `never` 타입은 일반적으로 함수의 리턴 타입으로 사용됩니다. 함수의 리턴 타입으로 `never`가 사용될 경우, 항상 오류를 출력하거나 리턴 값을 절대로 내보내지 않음을 의미합니다. `keepLogging`에서는 `while` 루프의 조건이 `true` 이기 때문에 무한루프를 돌게 됩니다. 따라서 해당 함수는 애플리케이션이 종료되기 전까지 끝나지 않으므로 `never` 타입을 리턴합니다.
+   `keepLogging` 함수의 리턴타입은 `never`입니다. `never` 타입은 일반적으로 함수의 리턴 타입으로 사용됩니다. 함수의 리턴 타입으로 `never`가 사용될 경우, 항상 오류를 출력하거나 리턴 값을 절대로 내보내지 않음을 의미합니다. `keepLogging`에서는 `while` 루프의 조건이 `true` 이기 때문에 무한루프를 돌게 됩니다. 따라서 해당 함수는 애플리케이션이 종료되기 전까지 끝나지 않으므로 `never` 타입을 리턴합니다.
+   
+   `never` 타입과 `void` 타입의 차이점은 `void` 타입의 경우 함수의 리턴 값이 없다는 것을 의미하며 `never` 타입의 경우 리턴 값이 절대로 나올 수 없다는 것을 의미합니다. 그래서 보통 throw를 던지는 함수나 무한 루프를 돌게 되는 함수의 경우 리턴 타입이 `never` 가 됩니다.
 
-`never` 타입과 `void` 타입의 차이점은 `void` 타입의 경우 함수의 리턴 값이 없다는 것을 의미하며 `never` 타입의 경우 리턴 값이 절대로 나올 수 없다는 것을 의미합니다. 그래서 보통 throw를 던지는 함수나 무한 루프를 돌게 되는 함수의 경우 리턴 타입이 `never` 가 됩니다.
-
-1. never 타입을 사용하는 경우를 찾아봐주세요.
+2. never 타입을 사용하는 경우를 찾아봐주세요.
 
    ### 에러처리
 
@@ -22,7 +22,7 @@
    console.log(value);
    ```
 
-   ### \***\*타이핑을 부분적으로 허용하지 않는다.\*\***
+   ### 타이핑을 부분적으로 허용하지 않는다.
 
    자바스크립트는 본질적으로 덕 타이핑 기반입니다. 하지만 타입스크립트를 활용한다면 타입스크립트의 타입 체커가 컴파일 단계에서 타입을 검사하기 때문에 **구조적 타이핑**이 가능합니다. 예를 들어 아래의 코드의 경우 타입스크립트에서 불평을 하지 않습니다.
 
@@ -80,11 +80,11 @@
    fn(input); // 에러... 타입스크립트가 불평함.
    ```
 
-이 외에도 `never` 타입을 활용한 다양한 방법들이 존재하더라고요. 저는 Zhenghao He의 포스팅에서 더 많은 예제가 소개되어 있어요. → [링크](https://www.zhenghao.io/posts/ts-never)
+   이 외에도 `never` 타입을 활용한 다양한 방법들이 존재하더라고요. 저는 Zhenghao He의 포스팅에서 더 많은 예제가 소개되어 있어요. → [링크](https://www.zhenghao.io/posts/ts-never)
+   
+   영어가 어려우신 분들은 TOAST UI의 기술블로그에 번역글이 있어요. → [링크](https://ui.toast.com/posts/ko_20220323)
 
-영어가 어려우신 분들은 TOAST UI의 기술블로그에 번역글이 있어요. → [링크](https://ui.toast.com/posts/ko_20220323)
-
-1. 아래의 코드에서 default 문에 `function neverReached(never: never) {}` 을 추가해 완성해주세요.
+3. 아래의 코드에서 default 문에 `function neverReached(never: never) {}` 을 추가해 완성해주세요.
 
    ```tsx
    type Status = "Pending" | "Working" | "Complete";
@@ -106,30 +106,30 @@
    doSomeAction("Pending");
    ```
 
-답변:
-
-```tsx
-type Status = "Pending" | "Working" | "Complete";
-
-function neverReached(never: never) {
-  throw new Error("Never Reached...!");
-}
-
-function doSomeAction(status: Status) {
-  switch (status) {
-    case "Pending":
-      // some code
-      break;
-    case "Working":
-      // some code
-      break;
-    case "Complete":
-      // some code
-      break;
-    default:
-      return neverReached(status);
-  }
-}
-
-doSomeAction("Pending");
-```
+   답변:
+   
+   ```tsx
+   type Status = "Pending" | "Working" | "Complete";
+   
+   function neverReached(never: never) {
+     throw new Error("Never Reached...!");
+   }
+   
+   function doSomeAction(status: Status) {
+     switch (status) {
+       case "Pending":
+         // some code
+         break;
+       case "Working":
+         // some code
+         break;
+       case "Complete":
+         // some code
+         break;
+       default:
+         return neverReached(status);
+     }
+   }
+   
+   doSomeAction("Pending");
+   ```
